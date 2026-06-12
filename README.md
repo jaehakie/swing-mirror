@@ -22,6 +22,35 @@ swing-mirror/
 Generated folders such as `node_modules/`, `dist/`, `backend/venv/`,
 `backend/dist/`, and upload results are intentionally excluded from git.
 
+## Quick Start
+
+Clone the repository:
+
+```bash
+git clone https://github.com/jaehakie/swing-mirror.git
+cd swing-mirror
+```
+
+Start the frontend in the first terminal:
+
+```bash
+npm install
+npm run dev
+```
+
+Start the backend in a second terminal:
+
+```bash
+cd backend
+python -m venv venv
+.\venv\Scripts\activate
+python -m pip install -r requirements.txt
+copy .env.example .env
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Open the Vite URL shown by `npm run dev`, usually `http://localhost:5173/`.
+
 ## Frontend
 
 ```bash
@@ -64,10 +93,11 @@ If you want the FastAPI server to serve the built React app, copy the generated
 
 ## Git Setup
 
-This cleaned folder is ready to initialize as a repository:
+After making changes:
 
 ```bash
-git init
+git status
 git add .
-git commit -m "Initial Swing Mirror cleanup"
+git commit -m "Describe your change"
+git push
 ```
