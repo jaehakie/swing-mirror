@@ -51,30 +51,10 @@ uvicorn main:app --reload --host 0.0.0.0 --port 8000
 
 Open the Vite URL shown by `npm run dev`, usually `http://localhost:5173/`.
 
-## Frontend
-
-```bash
-npm install
-npm run dev
-```
+## Configuration
 
 The frontend uses `VITE_API_URL` when provided. If it is not set, it calls
 `http://localhost:8000`.
-
-```bash
-VITE_API_URL=http://localhost:8000 npm run dev
-```
-
-## Backend
-
-```bash
-cd backend
-python -m venv venv
-.\venv\Scripts\activate
-python -m pip install -r requirements.txt
-copy .env.example .env
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
 
 Set `ANTHROPIC_API_KEY` in `backend/.env` to enable detailed AI feedback.
 Without the key, core pose comparison can still run, but AI report generation
