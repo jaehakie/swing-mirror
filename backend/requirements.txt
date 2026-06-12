@@ -6,7 +6,8 @@ python-dotenv
 pydantic-settings
 
 # 스윙 분석 (ipynb 의존성 그대로)
-mediapipe
+# 0.10.35 removed the legacy mp.solutions API used by this project.
+mediapipe==0.10.21
 opencv-python-headless
 numpy
 anthropic
