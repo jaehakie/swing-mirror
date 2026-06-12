@@ -1,0 +1,26 @@
+# Node / Vite
+node_modules/
+dist/
+*.local
+
+# Python
+backend/venv/
+backend/.venv/
+__pycache__/
+*.py[cod]
+
+# Backend runtime output
+backend/dist/
+backend/uploads/
+backend/**/uploads/
+*.log
+
+# Local environment
+.env
+backend/.env
+
+# Temporary project artifacts
+.pycache_check/
+tmp_codec/
+incoming_v*/
+.claude/

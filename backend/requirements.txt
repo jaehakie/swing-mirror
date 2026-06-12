@@ -1,0 +1,12 @@
+﻿fastapi
+uvicorn[standard]
+python-multipart
+aiofiles
+python-dotenv
+pydantic-settings
+
+# 스윙 분석 (ipynb 의존성 그대로)
+mediapipe
+opencv-python-headless
+numpy
+anthropic

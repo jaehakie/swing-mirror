@@ -1,0 +1,184 @@
+.calendar-page {
+  width: 100vw; height: 100vh;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #06090f; color: #fff;
+}
+
+.calendar-bg {
+  position: absolute; inset: 0;
+  background-image: url('/images/야구장.png');
+  background-size: cover;
+  background-position: center 25%;
+  z-index: 0;
+  filter: brightness(0.28) saturate(0.6);
+}
+.calendar-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 35% at 12% 2%, rgba(255,210,120,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 35% at 88% 2%, rgba(255,210,120,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 0%,  rgba(10,18,45,0.55)   0%, transparent 65%),
+    linear-gradient(to bottom, rgba(6,9,15,0.2) 0%, rgba(6,9,15,0.92) 100%);
+}
+
+.cal-main {
+  position: relative; z-index: 2;
+  flex: 1;
+  display: flex; flex-direction: column;
+  padding: 2.2vh 4vw 0;
+  overflow: hidden;
+}
+
+.cal-back-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.16); border-radius: 5px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: clamp(12px, 0.95vw, 14px); font-weight: 400;
+  padding: 7px 15px; cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  align-self: flex-start; margin-bottom: 1.8vh;
+}
+.cal-back-btn:hover { background: rgba(255,255,255,0.09); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+.cal-top-row {
+  display: flex; align-items: stretch; gap: 1.6vw;
+  margin-bottom: 2vh; flex-shrink: 0;
+}
+
+.cal-title-area {
+  display: flex; flex-direction: column; justify-content: center;
+  flex-shrink: 0; min-width: 160px;
+}
+.cal-page-title {
+  font-size: clamp(22px, 2.4vw, 38px);
+  font-weight: 900; color: #fff;
+  letter-spacing: -0.04em; line-height: 1.0; margin-bottom: 0.5vh;
+}
+.cal-page-subtitle { font-size: clamp(12px, 1vw, 15px); color: rgba(255,255,255,0.42); font-weight: 300; }
+
+.summary-cards { display: flex; gap: 1.2vw; flex: 1; align-items: stretch; }
+.summary-card {
+  flex: 1;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: clamp(14px, 1.8vh, 24px) clamp(16px, 1.8vw, 28px);
+  display: flex; align-items: center; gap: clamp(12px, 1.4vw, 20px);
+}
+.summary-icon {
+  font-size: clamp(26px, 2.8vw, 40px);
+  flex-shrink: 0; display: flex; align-items: center; justify-content: center; line-height: 1;
+}
+.summary-icon svg { width: clamp(26px, 2.6vw, 38px); height: clamp(26px, 2.6vw, 38px); }
+.summary-body { display: flex; flex-direction: column; gap: 2px; }
+.summary-label { font-size: clamp(11px, 0.88vw, 14px); color: rgba(255,255,255,0.5); font-weight: 400; }
+.summary-value { font-size: clamp(18px, 1.9vw, 28px); font-weight: 900; color: #fff; letter-spacing: -0.03em; line-height: 1.05; }
+.val-gold { color: #e8b84b; }
+.summary-sub { font-size: clamp(11px, 0.85vw, 13px); color: rgba(255,255,255,0.38); font-weight: 300; margin-top: 1px; }
+
+.cal-card {
+  background: rgba(12,18,34,0.82);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 12px;
+  padding: clamp(14px, 1.8vh, 22px) clamp(18px, 2.2vw, 32px) clamp(10px, 1.2vh, 16px);
+  flex: 1;
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+
+.cal-header {
+  display: flex; align-items: center; justify-content: center; gap: 1.8vw;
+  margin-bottom: clamp(10px, 1.4vh, 18px); flex-shrink: 0;
+}
+.cal-nav-btn {
+  background: none; border: none; cursor: pointer;
+  color: rgba(255,255,255,0.65); font-size: clamp(14px, 1.4vw, 20px);
+  padding: 4px 8px; border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  display: flex; align-items: center;
+}
+.cal-nav-btn:hover { color: #fff; background: rgba(255,255,255,0.07); }
+.cal-month-label {
+  font-size: clamp(15px, 1.5vw, 22px); font-weight: 700; color: #fff;
+  letter-spacing: -0.01em; min-width: 120px; text-align: center;
+}
+
+.cal-weekdays {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  margin-bottom: clamp(4px, 0.6vh, 8px); flex-shrink: 0;
+}
+.cal-wd {
+  text-align: center;
+  font-size: clamp(11px, 0.9vw, 14px); font-weight: 500;
+  padding: clamp(4px, 0.5vh, 7px) 0;
+  color: rgba(255,255,255,0.55);
+}
+.cal-wd.sun { color: #e05050; }
+.cal-wd.sat { color: #5090d8; }
+
+.cal-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  flex: 1;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-left: 1px solid rgba(255,255,255,0.07);
+}
+.cal-cell {
+  border-right: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; cursor: pointer;
+  transition: background 0.15s; min-height: 0;
+}
+.cal-cell:hover { background: rgba(255,255,255,0.04); }
+.cal-cell.other-month { opacity: 0.3; }
+
+.day-num {
+  font-size: clamp(13px, 1.25vw, 18px); font-weight: 400; color: #fff;
+  position: relative; z-index: 2;
+  width: clamp(30px, 3vw, 42px); height: clamp(30px, 3vw, 42px);
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%; transition: background 0.15s;
+}
+.cal-cell.sun .day-num { color: #e05050; }
+.cal-cell.sat .day-num { color: #5090d8; }
+.cal-cell.other-month .day-num { color: rgba(255,255,255,0.3); }
+
+.cal-cell.visited .day-num  { background: #e8b84b; color: #1a0d00; font-weight: 700; }
+.cal-cell.analyzed .day-num { background: #e8b84b; color: #1a0d00; font-weight: 700; }
+
+.baseball-badge {
+  position: absolute;
+  bottom: clamp(4px, 0.6vh, 7px); right: clamp(6px, 0.8vw, 12px);
+  font-size: clamp(10px, 1vw, 14px); z-index: 3; line-height: 1;
+}
+
+.cal-cell.today .day-num {
+  border: 2px solid #e8b84b; color: #e8b84b;
+  font-weight: 700; background: transparent !important;
+}
+
+.cal-legend {
+  display: flex; align-items: center; justify-content: center;
+  gap: clamp(16px, 2.8vw, 40px);
+  margin-top: clamp(8px, 1.1vh, 14px); flex-shrink: 0;
+}
+.legend-item {
+  display: flex; align-items: center; gap: 8px;
+  font-size: clamp(11px, 0.9vw, 14px); color: rgba(255,255,255,0.6); font-weight: 300;
+}
+.legend-dot {
+  width: clamp(16px, 1.6vw, 22px); height: clamp(16px, 1.6vw, 22px);
+  border-radius: 50%; flex-shrink: 0;
+}
+.legend-dot.visited { background: #e8b84b; }
+.legend-dot.today   { border: 2px solid #e8b84b; }
+.legend-baseball {
+  font-size: clamp(14px, 1.4vw, 18px); line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  width: clamp(16px, 1.6vw, 22px); height: clamp(16px, 1.6vw, 22px);
+}

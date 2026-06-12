@@ -1,0 +1,221 @@
+.home-page {
+  width: 100vw; height: 100vh;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #fff;
+  background: #06090f;
+}
+
+/* ── 배경 ── */
+.home-bg {
+  position: absolute; inset: 0;
+  background-image: url('/images/야구장.png');
+  background-size: cover;
+  background-position: center 25%;
+  z-index: 0;
+  filter: brightness(0.28) saturate(0.6);
+}
+.home-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 35% at 12% 2%, rgba(255,210,120,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 35% at 88% 2%, rgba(255,210,120,0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 0%,  rgba(10,18,45,0.55)   0%, transparent 65%),
+    linear-gradient(to bottom, rgba(6,9,15,0.2) 0%, rgba(6,9,15,0.92) 100%);
+}
+
+/* ── NAV ── */
+.home-nav {
+  position: relative; z-index: 10;
+  width: 100%; height: 8.5vh;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 2.4vw;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(5,8,18,0.55);
+  backdrop-filter: blur(12px);
+  flex-shrink: 0;
+}
+.home-logo { display: flex; align-items: center; flex-shrink: 0; cursor: default; }
+.home-logo-img {
+  height: 106px; width: auto;
+  filter: brightness(0) invert(1);
+  display: block;
+}
+.home-nav-menu {
+  display: flex; align-items: center; gap: 2vw;
+  list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.home-nav-menu a {
+  color: rgba(255,255,255,0.72);
+  text-decoration: none;
+  font-size: clamp(11px, 1vw, 16px);
+  font-weight: 400; letter-spacing: 0.02em;
+  transition: color 0.2s; padding-bottom: 3px;
+}
+.home-nav-menu a:hover { color: #fff; }
+.home-nav-menu a.active {
+  color: #e8b84b; font-weight: 700;
+  border-bottom: 2px solid #e8b84b;
+}
+.home-nav-profile {
+  display: flex; align-items: center; gap: 0.55vw;
+  cursor: pointer; flex-shrink: 0;
+}
+.home-profile-avatar {
+  width: clamp(26px, 2.4vw, 42px);
+  height: clamp(26px, 2.4vw, 42px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1a3a6e, #2a5bb0);
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.18);
+  flex-shrink: 0;
+}
+.home-profile-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.home-profile-name  { font-size: clamp(9px, 0.9vw, 14px); font-weight: 700; color: #fff; line-height: 1.25; }
+.home-profile-email { font-size: clamp(8px, 0.72vw, 11px); color: rgba(255,255,255,0.4); }
+.home-profile-caret { color: rgba(255,255,255,0.45); font-size: clamp(8px, 0.7vw, 12px); margin-left: 0.15vw; }
+
+/* ── HERO ── */
+.home-hero {
+  position: relative; z-index: 2;
+  flex: 1; display: flex; align-items: flex-end;
+  padding: 0 5vw 13vh;
+  overflow: hidden;
+  background-image: url('/images/야구장.png');
+  background-size: cover;
+  background-position: center top;
+}
+.home-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 0;
+}
+.home-hero-left {
+  position: relative; z-index: 3;
+  display: flex; flex-direction: column;
+  max-width: 52vw;
+}
+.home-quote-open {
+  font-size: clamp(36px, 4.8vw, 90px);
+  color: rgba(255,255,255,0.22);
+  font-family: Georgia, serif;
+  line-height: 0.55; margin-bottom: 0.8vh;
+  user-select: none;
+}
+.home-quote-text {
+  font-size: clamp(16px, 2.32vw, 43px);
+  font-weight: 900; line-height: 1.58;
+  letter-spacing: -0.025em; color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+}
+.home-quote-author {
+  margin-top: 1.4vh;
+  font-size: clamp(11px, 1vw, 17px);
+  color: rgba(255,255,255,0.55);
+  font-weight: 300; letter-spacing: 0.06em;
+}
+.home-cta-btn {
+  margin-top: 3.2vh;
+  display: inline-flex; align-items: center; gap: 0.65vw;
+  padding: 1.05vh 2.8vw;
+  background: linear-gradient(105deg, #b8831a 0%, #e8b84b 30%, #f8d878 55%, #e8b84b 75%, #b8831a 100%);
+  background-size: 220% auto;
+  border: none; border-radius: 4px;
+  color: #1c0d00;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: clamp(13px, 1.4vw, 24px);
+  font-weight: 900; letter-spacing: 0.1em;
+  cursor: pointer;
+  box-shadow: 0 0 32px rgba(232,184,75,0.45), 0 4px 22px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: background-position 0.5s, box-shadow 0.3s, transform 0.15s;
+  position: relative; overflow: hidden; white-space: nowrap;
+}
+.home-cta-btn::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 55%);
+  pointer-events: none;
+}
+.home-cta-btn:hover {
+  background-position: right center;
+  box-shadow: 0 0 55px rgba(232,184,75,0.75), 0 6px 32px rgba(0,0,0,0.65);
+  transform: translateY(-2px);
+}
+.home-hero-player {
+  position: absolute; left: 50%; bottom: 0;
+  transform: translateX(-30%);
+  height: 100%; z-index: 2;
+  object-fit: contain; object-position: bottom center;
+  filter: drop-shadow(-12px 0 60px rgba(232,184,75,0.22)) drop-shadow(0 0 100px rgba(100,140,255,0.12));
+}
+
+/* ── 카드 ── */
+.home-cards {
+  position: relative; z-index: 3;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  height: 21vh; flex-shrink: 0;
+}
+.home-card {
+  position: relative;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  padding: 1.4vh 1.6vw 0;
+  border-top: 1px solid rgba(255,255,255,0.09);
+  border-right: 1px solid rgba(255,255,255,0.055);
+  background: rgba(7,11,21,0.78);
+  cursor: pointer; overflow: hidden;
+  transition: background 0.25s;
+}
+.home-card:last-child { border-right: none; }
+.home-card:hover { background: rgba(13,19,34,0.92); }
+.home-card-num {
+  font-size: clamp(9px, 0.8vw, 13px);
+  color: rgba(255,255,255,0.28);
+  font-weight: 400; letter-spacing: 0.1em; margin-bottom: 0.7vh;
+}
+.home-card-title {
+  font-size: clamp(13px, 1.45vw, 24px);
+  font-weight: 900; color: #fff;
+  letter-spacing: -0.02em; margin-bottom: 0.6vh;
+}
+.home-card-desc {
+  font-size: clamp(9px, 0.8vw, 13px);
+  color: rgba(255,255,255,0.42);
+  font-weight: 300; line-height: 1.6;
+}
+.home-card-icon {
+  position: absolute; right: 1.4vw; top: 50%; transform: translateY(-50%);
+  width: clamp(38px, 4.2vw, 76px); height: clamp(38px, 4.2vw, 76px);
+  transition: transform 0.25s;
+}
+.home-card:hover .home-card-icon { transform: translateY(-50%) scale(1.07); }
+.home-card-arrow {
+  position: absolute; bottom: 1vh; right: 1.6vw;
+  font-size: clamp(12px, 1vw, 18px);
+  color: rgba(255,255,255,0.28);
+  transition: color 0.2s, transform 0.2s;
+}
+.home-card:hover .home-card-arrow { color: rgba(255,255,255,0.65); transform: translateX(4px); }
+
+/* ── FOOTER ── */
+.home-footer {
+  position: relative; z-index: 10;
+  height: 4.2vh; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 2.4vw;
+  background: rgba(3,5,10,0.92);
+  border-top: 1px solid rgba(255,255,255,0.05);
+  flex-shrink: 0;
+}
+.home-footer-copy { font-size: clamp(8px, 0.7vw, 12px); color: rgba(255,255,255,0.28); }
+.home-footer-links { display: flex; align-items: center; list-style: none; }
+.home-footer-links li { display: flex; align-items: center; }
+.home-footer-links a {
+  font-size: clamp(8px, 0.7vw, 12px); color: rgba(255,255,255,0.32);
+  text-decoration: none; transition: color 0.2s; padding: 0 0.8vw;
+}
+.home-footer-links a:hover { color: rgba(255,255,255,0.65); }
+.home-footer-links li + li::before { content: '|'; color: rgba(255,255,255,0.12); }
+.home-footer-sns { display: flex; align-items: center; gap: 0.9vw; }
+.home-footer-sns a { color: rgba(255,255,255,0.32); transition: color 0.2s; display: flex; align-items: center; }
+.home-footer-sns a:hover { color: rgba(255,255,255,0.65); }
+.home-footer-sns svg { width: clamp(12px, 1vw, 17px); height: clamp(12px, 1vw, 17px); }

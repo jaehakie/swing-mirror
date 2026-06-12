@@ -1,0 +1,288 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.select-page {
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  padding-bottom: 120px;
+}
+
+.select-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('/images/야구장.png');
+  background-size: cover;
+  background-position: 50% 20%;
+  background-attachment: fixed;
+  z-index: 0;
+}
+.select-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.50);
+}
+
+.select-content {
+  position: relative;
+  z-index: 1;
+}
+
+.select-header {
+  padding: 28px 40px 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+.select-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.20);
+  color: #fff;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 14px;
+  padding: 7px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: background .2s;
+}
+.select-back-btn:hover { background: rgba(255,255,255,0.18); }
+
+.select-title-area {
+  text-align: center;
+  padding: 32px 20px 28px;
+}
+.select-title-area h1 {
+  color: #fff;
+  font-size: clamp(26px, 4vw, 42px);
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 10px;
+}
+.select-title-area p {
+  color: rgba(200,210,225,0.7);
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.select-grid-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.kbo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+
+.mlb-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 740px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.player-card {
+  position: relative;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  user-select: none;
+}
+.player-card.kbo { aspect-ratio: 3/4; }
+.player-card.mlb { aspect-ratio: 16/7; }
+.player-card:hover { transform: translateY(-8px); }
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.card-logo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card-logo img {
+  width: 75%;
+  opacity: 0.25;
+  mix-blend-mode: screen;
+  filter: brightness(1.5) saturate(1.2);
+  object-fit: contain;
+}
+
+.card-player {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  height: 90%;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.card-player img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+}
+
+.player-card.mlb .card-player {
+  height: 110%;
+  bottom: -10%;
+}
+
+.card-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.95) 100%);
+}
+
+.card-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 4;
+  padding: 12px 14px 14px;
+}
+.player-card.mlb .card-info { padding: 14px 24px 18px; }
+
+.card-num {
+  position: absolute;
+  top: 10px; left: 12px;
+  z-index: 5;
+  color: rgba(200,215,235,0.55);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.card-badge {
+  position: absolute;
+  top: 10px; left: 12px;
+  z-index: 5;
+  background: #1a6bff;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.player-name-ko {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+.player-name-ko.mlb-name { font-size: 22px; font-weight: 900; }
+
+.player-name-en {
+  color: rgba(180,195,215,0.65);
+  font-size: 10px;
+  font-weight: 300;
+  margin: 2px 0 5px;
+}
+.player-name-en.mlb-name-en { font-size: 12px; margin: 4px 0 8px; }
+
+.player-team { font-size: 11px; font-weight: 500; }
+.player-team.mlb-team { font-size: 13px; font-weight: 700; }
+
+.card-check {
+  position: absolute;
+  top: 10px; right: 10px;
+  z-index: 6;
+  width: 24px; height: 24px;
+  background: #FF6B2B;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.player-card.selected .card-check { display: flex; }
+.player-card.selected { border-color: transparent; }
+
+/* 로고 상단 */
+.logo-top .card-logo { align-items: flex-start; padding: 16px 0 0 0; }
+.logo-top .card-logo img { width: 65%; opacity: 0.35; }
+.logo-xl .card-logo img { width: 88%; }
+.logo-kiwoom .card-logo { padding-top: 2px; }
+.logo-kiwoom .card-logo img { width: 100%; }
+.logo-top-kia .card-logo { align-items: flex-start; padding-top: 25px; }
+.logo-top-kia .card-logo img { width: 70%; }
+
+/* 선수 위치 조정 */
+.player-fit .card-player { height: 96%; bottom: 0; overflow: visible; }
+.player-fit .card-player img { object-position: bottom center; transform: none; }
+.player-up .card-player { bottom: 8%; }
+
+.select-footer {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 10;
+  padding: 16px 20px 20px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.85) 60%, transparent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.start-btn {
+  width: 100%;
+  max-width: 480px;
+  padding: 17px;
+  border-radius: 12px;
+  border: none;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .25s;
+  letter-spacing: 0.3px;
+}
+.start-btn:disabled {
+  background: rgba(100,110,125,0.4);
+  color: rgba(160,175,195,0.45);
+  cursor: not-allowed;
+}
+.start-btn:not(:disabled) {
+  background: #FF6B2B;
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(255,107,43,0.4);
+}
+.start-btn:not(:disabled):hover {
+  background: #ff7d45;
+  box-shadow: 0 6px 30px rgba(255,107,43,0.55);
+}
+
+.footer-note {
+  color: rgba(160,175,195,0.5);
+  font-size: 12px;
+  font-weight: 300;
+  text-align: center;
+}

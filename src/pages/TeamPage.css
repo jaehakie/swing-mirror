@@ -1,0 +1,117 @@
+.team-page {
+  width: 100vw; height: 100vh;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+  font-family: 'Noto Sans KR', sans-serif;
+  background: #06090f; color: #fff;
+}
+
+.team-bg {
+  position: absolute; inset: 0;
+  background-image: url('/images/야구장.png');
+  background-size: cover;
+  background-position: center top;
+  z-index: 0;
+  filter: brightness(0.45) saturate(0.7);
+}
+.team-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 35% at 12% 2%, rgba(255,210,120,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 55% 35% at 88% 2%, rgba(255,210,120,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 50% 0%,  rgba(10,18,45,0.45)   0%, transparent 65%),
+    linear-gradient(to bottom, rgba(6,9,15,0.10) 0%, rgba(6,9,15,0.75) 100%);
+}
+
+.team-main {
+  position: relative; z-index: 2;
+  flex: 1; overflow-y: auto;
+  padding: 2.8vh 4vw 3vh;
+  display: flex; flex-direction: column;
+}
+.team-main::-webkit-scrollbar { width: 4px; }
+.team-main::-webkit-scrollbar-track { background: transparent; }
+.team-main::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 2px; }
+
+.team-back-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.16); border-radius: 5px;
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: clamp(12px, 0.95vw, 14px); font-weight: 400;
+  padding: 7px 15px; cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  align-self: flex-start; margin-bottom: 2vh;
+}
+.team-back-btn:hover { background: rgba(255,255,255,0.09); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+.team-title-area { text-align: center; margin-bottom: 3.5vh; flex-shrink: 0; }
+.team-title-area h1 {
+  font-size: clamp(28px, 3.2vw, 50px); font-weight: 900; color: #fff;
+  letter-spacing: -0.04em; margin-bottom: 0.6vh;
+}
+.team-title-area p { font-size: clamp(13px, 1.05vw, 17px); color: rgba(200,210,225,0.6); font-weight: 300; }
+
+.team-cards-wrap {
+  max-width: 1060px; margin: 0 auto; width: 100%;
+  flex: 1; display: flex; flex-direction: column;
+  gap: clamp(12px, 1.5vh, 18px);
+}
+.team-row-3 {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 1.4vw, 18px);
+}
+.team-row-2 {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: clamp(12px, 1.4vw, 18px);
+  max-width: 68%; margin: 0 auto; width: 100%;
+}
+
+.member-card {
+  background: rgba(12,18,34,0.80);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  padding: clamp(20px, 2.5vh, 32px) clamp(18px, 2vw, 28px);
+  display: flex; flex-direction: column; align-items: center;
+  gap: clamp(8px, 1vh, 12px);
+  backdrop-filter: blur(10px);
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.member-card:hover {
+  background: rgba(18,26,48,0.88);
+  border-color: rgba(232,184,75,0.6);
+  box-shadow: 0 0 14px rgba(232,184,75,0.25), 0 0 32px rgba(232,184,75,0.10);
+}
+
+.card-name-ko {
+  font-size: clamp(22px, 2.2vw, 32px); font-weight: 900; color: #fff;
+  letter-spacing: -0.03em; line-height: 1;
+}
+.card-name-en { font-size: clamp(12px, 1vw, 15px); color: rgba(200,212,230,0.58); font-weight: 300; letter-spacing: 0.02em; }
+.card-role-badge {
+  display: inline-flex; align-items: center;
+  border: 1.5px solid #e8b84b; color: #e8b84b;
+  border-radius: 30px; padding: 4px 16px;
+  font-size: clamp(11px, 0.9vw, 13px); font-weight: 500;
+  letter-spacing: 0.02em; white-space: nowrap;
+}
+.card-divider {
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(232,184,75,0.45), transparent);
+  margin: 2px 0;
+}
+.card-desc-row {
+  display: flex; align-items: center;
+  gap: clamp(10px, 1.2vw, 16px); width: 100%;
+}
+.card-icon {
+  flex-shrink: 0;
+  width: clamp(30px, 2.8vw, 40px); height: clamp(30px, 2.8vw, 40px);
+  display: flex; align-items: center; justify-content: center;
+}
+.card-icon svg { width: 100%; height: 100%; }
+.card-desc {
+  font-size: clamp(12px, 1vw, 15px); color: rgba(210,222,238,0.82);
+  font-weight: 300; line-height: 1.65; white-space: pre-line;
+}
